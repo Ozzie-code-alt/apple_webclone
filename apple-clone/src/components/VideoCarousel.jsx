@@ -20,6 +20,12 @@ const VideoCarousel = () => {
   const { isEnd, isLastVideo, startPlay, videoId, isPlaying } = video;
 
   useGSAP(() => {
+    gsap.to("#slider", {
+      transform: `translateX(${-100 * videoId}%)`,
+      duration: 2,
+      ease: "power2.inOut",
+    });
+
     gsap.to("#video", {
       scrollTrigger: {
         trigger: "#video",
@@ -91,7 +97,8 @@ const VideoCarousel = () => {
       }
       const animUpdate = () => {
         anim.progress(
-          videoRef.current[videoId] / hightlightsSlides[videoId].videoDuration
+          videoRef.current[videoId].currentTime /
+            hightlightsSlides[videoId].videoDuration
         );
       };
       if (isPlaying) {
@@ -127,6 +134,13 @@ const VideoCarousel = () => {
           isPlaying: !prevVideo.isPlaying,
         }));
         break;
+      case "pause":
+        setVideo((prevVideo) => ({
+          ...prevVideo,
+          isPlaying: !prevVideo.isPlaying,
+        }));
+        break;
+
       default:
         break;
     }
@@ -143,8 +157,14 @@ const VideoCarousel = () => {
                   id="video"
                   playsInline
                   muted
+                  className={`${slide.id === 3 && 'translate-x-44'}`}
                   preload="auto"
                   ref={(el) => (videoRef.current[index] = el)}
+                  onEnded={() =>
+                    index !== 3
+                      ? handleProcess("video-end", index)
+                      : handleProcess("video-last")
+                  }
                   onPlay={() => {
                     setVideo((prevVideo) => ({
                       ...prevVideo,
