@@ -13,6 +13,7 @@
     "@gsap/react": "^2.1.1",
     "@react-three/drei": "^9.105.4",
     "@react-three/fiber": "^8.16.2",
+    "ast-types": "^0.14.2",
     "autoprefixer": "^10.4.19",
     "gsap": "^3.12.5",
     "react": "^18.2.0",
@@ -21,6 +22,7 @@
     "three": "^0.163.0"
   },
   "devDependencies": {
+    "@sentry/react": "^7.112.2",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
     "@vitejs/plugin-react": "^4.2.1",
@@ -29,5 +31,6 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.6",
     "vite": "^5.2.0"
-  }
+  },
+  "packageManager": "yarn@1.22.21+sha1.1959a18351b811cdeedbd484a8f86c3cc3bbaf72"
 }
