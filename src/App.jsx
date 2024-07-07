@@ -7,7 +7,7 @@ import HowitWorks from "./components/HotitWorks";
 import Footer from "./components/Footer";
 const App = () => {
   return (
-    <main className="">
+    <main className="h-auto">
       <NavbarApple />
       <HeroApple />
       <HighlighApple />
